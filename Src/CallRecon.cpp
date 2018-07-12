@@ -136,9 +136,7 @@ int main( int argc , char* argv[] ) {
     delete [] tFaces[i];
   }
 
-  cout << "bitch" << endl;
   return 0;
-  cout << "bitch" << endl;
 }
 
 int simpleCmdParse( int argc, char* argv[], Argument &arg ) {
