@@ -11,10 +11,14 @@ Bin/Linux/CallRecon --in Data/sphere_points_cut.xyz --out Data/test.obj --depth 
 ```
 And you will see Data/test.obj as generated file. By changing trim value from 0 to 4, you can see different result. Value 0 will be the results of originally poisson surface reconstruction. While value 3.5 will cut come low density faces.
 
+Results for density value 0
+
 ![Results for density value 0](/Img/result_0.png)
+
+Results for density value 3.5
+
 ![Results for density value 3.5](/Img/result_3.5.png)
 
----
 
 ## How to use in your own project
 The usage of PoissonRecon and SurfaceTrimmer is coded in Src/CallRecon.cpp. 
@@ -76,24 +80,31 @@ Note that the each vertex has for value (x, y, z and density value), density val
 
 In CallRecon.cpp, I have four basic functions `simpleCmdParse`, `argValidate`, `readPoints` and `writeModel`, you can replace them 
 
----
 
 ## What did I exactly do
-
 See this [commit](https://github.com/xiasun/PoissonReconPackage/commit/1497259cb8fa8057d55a031328ce9b931fac468a) to know what I exactly do.
 I add a new setOctree method in MultiGridOctreeData to handle input as `vector<float*>`, then create PoissonRecon.h and SurfaceTrimmer.h to migrate their original implementation into headers that could be used by other program.
 
----
 
 ## Sample Data
 I have four sample data provided.
 
+sphere_mesh_original.obj: the model of a sphere
+
 ![sphere_mesh_original.obj: the model of a sphere](/Img/input_model.png)
+
+sphere_mesh_cut.obj: the model of a cutted sphere
+
 ![sphere_mesh_cut.obj: the model of a cutted sphere](/Img/input_model_cut.png)
+
+sphere_points_original.xyz: the pointset of a sphere (normals included)
+
 ![sphere_points_original.xyz: the pointset of a sphere (normals included)](/Img/input_points.png)
+
+sphere_points_cut.xyz: the pointset of a cutted sphere (normals included)
+
 ![sphere_points_cut.xyz: the pointset of a cutted sphere (normals included)](/Img/input_points_cut.png)
 
----
 
 ## Conclusion
 This project is based on [Screened Poisson Surface Reconstruction Version 5](http://www.cs.jhu.edu/~misha/Code/PoissonRecon/Version5/).
